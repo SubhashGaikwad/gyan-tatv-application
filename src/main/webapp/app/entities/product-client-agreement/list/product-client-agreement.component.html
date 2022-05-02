@@ -1,0 +1,153 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductClientAgreementHeading">
+    <span jhiTranslate="gyanTatvApp.productClientAgreement.home.title">Product Client Agreements</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gyanTatvApp.productClientAgreement.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-product-client-agreement"
+        [routerLink]="['/product-client-agreement/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gyanTatvApp.productClientAgreement.home.createLabel"> Create a new Product Client Agreement </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="productClientAgreements?.length === 0">
+    <span jhiTranslate="gyanTatvApp.productClientAgreement.home.notFound">No productClientAgreements found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="productClientAgreements && productClientAgreements.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="price">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.price">Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="creditPeriod">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.creditPeriod">Credit Period</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="penalty">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.penalty">Penalty</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="penaltyTerms">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.penaltyTerms">Penalty Terms</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="notes">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.notes">Notes</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="image">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.image">Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="agreementPeriod">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.agreementPeriod">Agreement Period</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="termAndConditions">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.termAndConditions">Term And Conditions</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField1">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.freeField1">Free Field 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField2">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.freeField2">Free Field 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField3">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.freeField3">Free Field 3</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField4">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.freeField4">Free Field 4</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="gyanTatvApp.productClientAgreement.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productClientAgreement of productClientAgreements; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/product-client-agreement', productClientAgreement.id, 'view']">{{ productClientAgreement.id }}</a>
+          </td>
+          <td>{{ productClientAgreement.price }}</td>
+          <td>{{ productClientAgreement.creditPeriod }}</td>
+          <td>{{ productClientAgreement.penalty }}</td>
+          <td jhiTranslate="{{ 'gyanTatvApp.PenaltyTerms.' + productClientAgreement.penaltyTerms }}">
+            {{ productClientAgreement.penaltyTerms }}
+          </td>
+          <td>{{ productClientAgreement.notes }}</td>
+          <td>{{ productClientAgreement.image }}</td>
+          <td>{{ productClientAgreement.agreementPeriod }}</td>
+          <td>{{ productClientAgreement.termAndConditions }}</td>
+          <td>{{ productClientAgreement.freeField1 }}</td>
+          <td>{{ productClientAgreement.freeField2 }}</td>
+          <td>{{ productClientAgreement.freeField3 }}</td>
+          <td>{{ productClientAgreement.freeField4 }}</td>
+          <td>{{ productClientAgreement.lastModified }}</td>
+          <td>{{ productClientAgreement.lastModifiedBy }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/product-client-agreement', productClientAgreement.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/product-client-agreement', productClientAgreement.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(productClientAgreement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="productClientAgreements && productClientAgreements.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

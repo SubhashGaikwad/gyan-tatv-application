@@ -1,0 +1,9 @@
+{
+  "gyanTatvApp": {
+    "ParameterType": {
+      "null": "",
+      "REGISTRATION_CATEGORY": "Registration Category",
+      "OTHER": "Other"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "applications": "*",
+  "changelogDate": "20220502105621",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "product_client_agreement",
+  "fields": [
+    {
+      "fieldName": "price",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "creditPeriod",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "penalty",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "penaltyTerms",
+      "fieldType": "PenaltyTerms",
+      "fieldValues": "DAILY (Daily),MONTHLY (Monthly),YEARLY (Yearly)"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "agreementPeriod",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "termAndConditions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ProductClientAgreement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

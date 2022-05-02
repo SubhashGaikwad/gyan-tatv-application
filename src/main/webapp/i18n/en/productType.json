@@ -1,0 +1,11 @@
+{
+  "gyanTatvApp": {
+    "ProductType": {
+      "null": "",
+      "RAWMATERIAL": "RawMaterial",
+      "PRODUCT": "Product",
+      "BOTH": "Both",
+      "OTHER": "Other"
+    }
+  }
+}

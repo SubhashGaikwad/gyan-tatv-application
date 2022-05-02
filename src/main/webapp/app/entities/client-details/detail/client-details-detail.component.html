@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="clientDetails">
+      <h2 data-cy="clientDetailsDetailsHeading"><span jhiTranslate="gyanTatvApp.clientDetails.detail.title">Client Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ clientDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.clientName">Client Name</span></dt>
+        <dd>
+          <span>{{ clientDetails.clientName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.mobileNo">Mobile No</span></dt>
+        <dd>
+          <span>{{ clientDetails.mobileNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.email">Email</span></dt>
+        <dd>
+          <span>{{ clientDetails.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.billingAddress">Billing Address</span></dt>
+        <dd>
+          <span>{{ clientDetails.billingAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyName">Company Name</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyContactNo">Company Contact No</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyContactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.website">Website</span></dt>
+        <dd>
+          <span>{{ clientDetails.website }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.gstinNumber">Gstin Number</span></dt>
+        <dd>
+          <span>{{ clientDetails.gstinNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.description">Description</span></dt>
+        <dd>
+          <span>{{ clientDetails.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.clientType">Client Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gyanTatvApp.ClientType.' + clientDetails.clientType }}">{{ clientDetails.clientType }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.isactivated">Isactivated</span></dt>
+        <dd>
+          <span>{{ clientDetails.isactivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.freeField1">Free Field 1</span></dt>
+        <dd>
+          <span>{{ clientDetails.freeField1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ clientDetails.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ clientDetails.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/client-details', clientDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
