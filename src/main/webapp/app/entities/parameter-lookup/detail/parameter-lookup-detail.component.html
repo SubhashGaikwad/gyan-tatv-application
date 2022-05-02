@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parameterLookup">
+      <h2 data-cy="parameterLookupDetailsHeading"><span jhiTranslate="gyanTatvApp.parameterLookup.detail.title">Parameter Lookup</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parameterLookup.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.name">Name</span></dt>
+        <dd>
+          <span>{{ parameterLookup.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gyanTatvApp.ParameterType.' + parameterLookup.type }}">{{ parameterLookup.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.value">Value</span></dt>
+        <dd>
+          <span>{{ parameterLookup.value }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.descriptions">Descriptions</span></dt>
+        <dd>
+          <span>{{ parameterLookup.descriptions }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.isActive">Is Active</span></dt>
+        <dd>
+          <span>{{ parameterLookup.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ parameterLookup.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.parameterLookup.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ parameterLookup.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parameter-lookup', parameterLookup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

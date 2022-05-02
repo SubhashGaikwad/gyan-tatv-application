@@ -1,0 +1,188 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-product-client-agreement-heading"
+        data-cy="ProductClientAgreementCreateUpdateHeading"
+        jhiTranslate="gyanTatvApp.productClientAgreement.home.createOrEditLabel"
+      >
+        Create or edit a Product Client Agreement
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.creditPeriod" for="field_creditPeriod"
+            >Credit Period</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="creditPeriod"
+            id="field_creditPeriod"
+            data-cy="creditPeriod"
+            formControlName="creditPeriod"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.penalty" for="field_penalty">Penalty</label>
+          <input type="number" class="form-control" name="penalty" id="field_penalty" data-cy="penalty" formControlName="penalty" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.penaltyTerms" for="field_penaltyTerms"
+            >Penalty Terms</label
+          >
+          <select class="form-control" name="penaltyTerms" formControlName="penaltyTerms" id="field_penaltyTerms" data-cy="penaltyTerms">
+            <option [ngValue]="null">{{ 'gyanTatvApp.PenaltyTerms.null' | translate }}</option>
+            <option *ngFor="let penaltyTerms of penaltyTermsValues" [value]="penaltyTerms">
+              {{ 'gyanTatvApp.PenaltyTerms.' + penaltyTerms | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.image" for="field_image">Image</label>
+          <input type="text" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.agreementPeriod" for="field_agreementPeriod"
+            >Agreement Period</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="agreementPeriod"
+            id="field_agreementPeriod"
+            data-cy="agreementPeriod"
+            formControlName="agreementPeriod"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.termAndConditions" for="field_termAndConditions"
+            >Term And Conditions</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="termAndConditions"
+            id="field_termAndConditions"
+            data-cy="termAndConditions"
+            formControlName="termAndConditions"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.freeField1" for="field_freeField1">Free Field 1</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField1"
+            id="field_freeField1"
+            data-cy="freeField1"
+            formControlName="freeField1"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.freeField2" for="field_freeField2">Free Field 2</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField2"
+            id="field_freeField2"
+            data-cy="freeField2"
+            formControlName="freeField2"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.freeField3" for="field_freeField3">Free Field 3</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField3"
+            id="field_freeField3"
+            data-cy="freeField3"
+            formControlName="freeField3"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.freeField4" for="field_freeField4">Free Field 4</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField4"
+            id="field_freeField4"
+            data-cy="freeField4"
+            formControlName="freeField4"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.productClientAgreement.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
