@@ -1,0 +1,201 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="clientDetails">
+      <h2 data-cy="clientDetailsDetailsHeading"><span jhiTranslate="gyanTatvApp.clientDetails.detail.title">Client Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ clientDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.customerID">Customer ID</span></dt>
+        <dd>
+          <span>{{ clientDetails.customerID }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.clientName">Client Name</span></dt>
+        <dd>
+          <span>{{ clientDetails.clientName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.clientType">Client Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gyanTatvApp.ClientType.' + clientDetails.clientType }}">{{ clientDetails.clientType }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.mobileNo">Mobile No</span></dt>
+        <dd>
+          <span>{{ clientDetails.mobileNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.email">Email</span></dt>
+        <dd>
+          <span>{{ clientDetails.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.pincode">Pincode</span></dt>
+        <dd>
+          <span>{{ clientDetails.pincode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.billingAddress">Billing Address</span></dt>
+        <dd>
+          <span>{{ clientDetails.billingAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyName">Company Name</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyContactNo">Company Contact No</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyContactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.website">Website</span></dt>
+        <dd>
+          <span>{{ clientDetails.website }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.gstinNumber">Gstin Number</span></dt>
+        <dd>
+          <span>{{ clientDetails.gstinNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyPan">Company Pan</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyPan }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.pancardImage">Pancard Image</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.pancardImage">
+            <a (click)="openFile(clientDetails.pancardImage, clientDetails.pancardImageContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ clientDetails.pancardImageContentType }}, {{ byteSize(clientDetails.pancardImage) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.companyTan">Company Tan</span></dt>
+        <dd>
+          <span>{{ clientDetails.companyTan }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.tanImage">Tan Image</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.tanImage">
+            <a (click)="openFile(clientDetails.tanImage, clientDetails.tanImageContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ clientDetails.tanImageContentType }}, {{ byteSize(clientDetails.tanImage) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.gstCertificateImage">Gst Certificate Image</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.gstCertificateImage">
+            <a
+              (click)="openFile(clientDetails.gstCertificateImage, clientDetails.gstCertificateImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ clientDetails.gstCertificateImageContentType }}, {{ byteSize(clientDetails.gstCertificateImage) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.cancelledChequeImage">Cancelled Cheque Image</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.cancelledChequeImage">
+            <a
+              (click)="openFile(clientDetails.cancelledChequeImage, clientDetails.cancelledChequeImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ clientDetails.cancelledChequeImageContentType }}, {{ byteSize(clientDetails.cancelledChequeImage) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.udyogAadharImage">Udyog Aadhar Image</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.udyogAadharImage">
+            <a
+              (click)="openFile(clientDetails.udyogAadharImage, clientDetails.udyogAadharImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ clientDetails.udyogAadharImageContentType }}, {{ byteSize(clientDetails.udyogAadharImage) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.description">Description</span></dt>
+        <dd>
+          <span>{{ clientDetails.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.nameOfBeneficiary">Name Of Beneficiary</span></dt>
+        <dd>
+          <span>{{ clientDetails.nameOfBeneficiary }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.accountNumber">Account Number</span></dt>
+        <dd>
+          <span>{{ clientDetails.accountNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.bankName">Bank Name</span></dt>
+        <dd>
+          <span>{{ clientDetails.bankName }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.accountType">Account Type</span></dt>
+        <dd>
+          <span>{{ clientDetails.accountType }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.ifscCode">Ifsc Code</span></dt>
+        <dd>
+          <span>{{ clientDetails.ifscCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.registrationCategory">Registration Category</span></dt>
+        <dd>
+          <span>{{ clientDetails.registrationCategory }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.registrationLevel">Registration Level</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gyanTatvApp.RegistrationLevel.' + clientDetails.registrationLevel }}">{{
+            clientDetails.registrationLevel
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.isApproved">Is Approved</span></dt>
+        <dd>
+          <span>{{ clientDetails.isApproved }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.isActivated">Is Activated</span></dt>
+        <dd>
+          <span>{{ clientDetails.isActivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.freeField1">Free Field 1</span></dt>
+        <dd>
+          <span>{{ clientDetails.freeField1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.freeField2">Free Field 2</span></dt>
+        <dd>
+          <span>{{ clientDetails.freeField2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.freeField3">Free Field 3</span></dt>
+        <dd>
+          <span>{{ clientDetails.freeField3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.freeField4">Free Field 4</span></dt>
+        <dd>
+          <span>{{ clientDetails.freeField4 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ clientDetails.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ clientDetails.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.clientDetails.district">District</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.district">
+            <a [routerLink]="['/district', clientDetails.district?.id, 'view']">{{ clientDetails.district?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/client-details', clientDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "gyanTatvApp": {
+    "PenaltyTerms": {
+      "null": "",
+      "DAILY": "Daily",
+      "MONTHLY": "Monthly",
+      "QUARTERLY": "Quarterly",
+      "YEARLY": "Yearly"
+    }
+  }
+}

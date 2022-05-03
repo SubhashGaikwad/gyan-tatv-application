@@ -1,0 +1,59 @@
+{
+  "gyanTatvApp": {
+    "clientDetails": {
+      "home": {
+        "title": "Client Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Client Details",
+        "createOrEditLabel": "Create or edit a Client Details",
+        "notFound": "No Client Details found"
+      },
+      "created": "A new Client Details is created with identifier {{ param }}",
+      "updated": "A Client Details is updated with identifier {{ param }}",
+      "deleted": "A Client Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Client Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Client Details"
+      },
+      "id": "ID",
+      "customerID": "Customer ID",
+      "clientName": "Client Name",
+      "clientType": "Client Type",
+      "mobileNo": "Mobile No",
+      "email": "Email",
+      "pincode": "Pincode",
+      "billingAddress": "Billing Address",
+      "companyName": "Company Name",
+      "companyContactNo": "Company Contact No",
+      "website": "Website",
+      "gstinNumber": "Gstin Number",
+      "companyPan": "Company Pan",
+      "pancardImage": "Pancard Image",
+      "companyTan": "Company Tan",
+      "tanImage": "Tan Image",
+      "gstCertificateImage": "Gst Certificate Image",
+      "cancelledChequeImage": "Cancelled Cheque Image",
+      "udyogAadharImage": "Udyog Aadhar Image",
+      "description": "Description",
+      "nameOfBeneficiary": "Name Of Beneficiary",
+      "accountNumber": "Account Number",
+      "bankName": "Bank Name",
+      "accountType": "Account Type",
+      "ifscCode": "Ifsc Code",
+      "registrationCategory": "Registration Category",
+      "registrationLevel": "Registration Level",
+      "isApproved": "Is Approved",
+      "isActivated": "Is Activated",
+      "freeField1": "Free Field 1",
+      "freeField2": "Free Field 2",
+      "freeField3": "Free Field 3",
+      "freeField4": "Free Field 4",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "district": "District",
+      "productClientAgreement": "Product Client Agreement"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "gyanTatvApp": {
+    "productClientAgreement": {
+      "home": {
+        "title": "Product Client Agreements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Product Client Agreement",
+        "createOrEditLabel": "Create or edit a Product Client Agreement",
+        "notFound": "No Product Client Agreements found"
+      },
+      "created": "A new Product Client Agreement is created with identifier {{ param }}",
+      "updated": "A Product Client Agreement is updated with identifier {{ param }}",
+      "deleted": "A Product Client Agreement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Product Client Agreement {{ id }}?"
+      },
+      "detail": {
+        "title": "Product Client Agreement"
+      },
+      "id": "ID",
+      "price": "Price",
+      "creditPeriod": "Credit Period",
+      "penalty": "Penalty",
+      "penaltyTerms": "Penalty Terms",
+      "notes": "Notes",
+      "image": "Image",
+      "agreementPeriod": "Agreement Period",
+      "termAndConditions": "Term And Conditions",
+      "description": "Description",
+      "freeField1": "Free Field 1",
+      "freeField2": "Free Field 2",
+      "freeField3": "Free Field 3",
+      "freeField4": "Free Field 4",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "product": "Product",
+      "clientDetails": "Client Details"
+    }
+  }
+}
