@@ -1,0 +1,289 @@
+<div>
+  <h2 id="page-heading" data-cy="ClientDetailsHeading">
+    <span jhiTranslate="gyanTatvApp.clientDetails.home.title">Client Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gyanTatvApp.clientDetails.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-client-details"
+        [routerLink]="['/client-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gyanTatvApp.clientDetails.home.createLabel"> Create a new Client Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="clientDetails?.length === 0">
+    <span jhiTranslate="gyanTatvApp.clientDetails.home.notFound">No clientDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="clientDetails && clientDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="customerID">
+            <span jhiTranslate="gyanTatvApp.clientDetails.customerID">Customer ID</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="clientName">
+            <span jhiTranslate="gyanTatvApp.clientDetails.clientName">Client Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="clientType">
+            <span jhiTranslate="gyanTatvApp.clientDetails.clientType">Client Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mobileNo">
+            <span jhiTranslate="gyanTatvApp.clientDetails.mobileNo">Mobile No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="gyanTatvApp.clientDetails.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pincode">
+            <span jhiTranslate="gyanTatvApp.clientDetails.pincode">Pincode</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="billingAddress">
+            <span jhiTranslate="gyanTatvApp.clientDetails.billingAddress">Billing Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyName">
+            <span jhiTranslate="gyanTatvApp.clientDetails.companyName">Company Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyContactNo">
+            <span jhiTranslate="gyanTatvApp.clientDetails.companyContactNo">Company Contact No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="website">
+            <span jhiTranslate="gyanTatvApp.clientDetails.website">Website</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gstinNumber">
+            <span jhiTranslate="gyanTatvApp.clientDetails.gstinNumber">Gstin Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyPan">
+            <span jhiTranslate="gyanTatvApp.clientDetails.companyPan">Company Pan</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pancardImage">
+            <span jhiTranslate="gyanTatvApp.clientDetails.pancardImage">Pancard Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyTan">
+            <span jhiTranslate="gyanTatvApp.clientDetails.companyTan">Company Tan</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tanImage">
+            <span jhiTranslate="gyanTatvApp.clientDetails.tanImage">Tan Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gstCertificateImage">
+            <span jhiTranslate="gyanTatvApp.clientDetails.gstCertificateImage">Gst Certificate Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cancelledChequeImage">
+            <span jhiTranslate="gyanTatvApp.clientDetails.cancelledChequeImage">Cancelled Cheque Image</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="udyogAadharImage">
+            <span jhiTranslate="gyanTatvApp.clientDetails.udyogAadharImage">Udyog Aadhar Image</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="gyanTatvApp.clientDetails.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nameOfBeneficiary">
+            <span jhiTranslate="gyanTatvApp.clientDetails.nameOfBeneficiary">Name Of Beneficiary</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="accountNumber">
+            <span jhiTranslate="gyanTatvApp.clientDetails.accountNumber">Account Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bankName">
+            <span jhiTranslate="gyanTatvApp.clientDetails.bankName">Bank Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="accountType">
+            <span jhiTranslate="gyanTatvApp.clientDetails.accountType">Account Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ifscCode">
+            <span jhiTranslate="gyanTatvApp.clientDetails.ifscCode">Ifsc Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="registrationCategory">
+            <span jhiTranslate="gyanTatvApp.clientDetails.registrationCategory">Registration Category</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="registrationLevel">
+            <span jhiTranslate="gyanTatvApp.clientDetails.registrationLevel">Registration Level</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isApproved">
+            <span jhiTranslate="gyanTatvApp.clientDetails.isApproved">Is Approved</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isActivated">
+            <span jhiTranslate="gyanTatvApp.clientDetails.isActivated">Is Activated</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField1">
+            <span jhiTranslate="gyanTatvApp.clientDetails.freeField1">Free Field 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField2">
+            <span jhiTranslate="gyanTatvApp.clientDetails.freeField2">Free Field 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField3">
+            <span jhiTranslate="gyanTatvApp.clientDetails.freeField3">Free Field 3</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField4">
+            <span jhiTranslate="gyanTatvApp.clientDetails.freeField4">Free Field 4</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="gyanTatvApp.clientDetails.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="gyanTatvApp.clientDetails.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="district.id">
+            <span jhiTranslate="gyanTatvApp.clientDetails.district">District</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clientDetails of clientDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/client-details', clientDetails.id, 'view']">{{ clientDetails.id }}</a>
+          </td>
+          <td>{{ clientDetails.customerID }}</td>
+          <td>{{ clientDetails.clientName }}</td>
+          <td jhiTranslate="{{ 'gyanTatvApp.ClientType.' + clientDetails.clientType }}">{{ clientDetails.clientType }}</td>
+          <td>{{ clientDetails.mobileNo }}</td>
+          <td>{{ clientDetails.email }}</td>
+          <td>{{ clientDetails.pincode }}</td>
+          <td>{{ clientDetails.billingAddress }}</td>
+          <td>{{ clientDetails.companyName }}</td>
+          <td>{{ clientDetails.companyContactNo }}</td>
+          <td>{{ clientDetails.website }}</td>
+          <td>{{ clientDetails.gstinNumber }}</td>
+          <td>{{ clientDetails.companyPan }}</td>
+          <td>
+            <a
+              *ngIf="clientDetails.pancardImage"
+              (click)="openFile(clientDetails.pancardImage, clientDetails.pancardImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="clientDetails.pancardImage"
+              >{{ clientDetails.pancardImageContentType }}, {{ byteSize(clientDetails.pancardImage) }}</span
+            >
+          </td>
+          <td>{{ clientDetails.companyTan }}</td>
+          <td>
+            <a
+              *ngIf="clientDetails.tanImage"
+              (click)="openFile(clientDetails.tanImage, clientDetails.tanImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="clientDetails.tanImage">{{ clientDetails.tanImageContentType }}, {{ byteSize(clientDetails.tanImage) }}</span>
+          </td>
+          <td>
+            <a
+              *ngIf="clientDetails.gstCertificateImage"
+              (click)="openFile(clientDetails.gstCertificateImage, clientDetails.gstCertificateImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="clientDetails.gstCertificateImage"
+              >{{ clientDetails.gstCertificateImageContentType }}, {{ byteSize(clientDetails.gstCertificateImage) }}</span
+            >
+          </td>
+          <td>
+            <a
+              *ngIf="clientDetails.cancelledChequeImage"
+              (click)="openFile(clientDetails.cancelledChequeImage, clientDetails.cancelledChequeImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="clientDetails.cancelledChequeImage"
+              >{{ clientDetails.cancelledChequeImageContentType }}, {{ byteSize(clientDetails.cancelledChequeImage) }}</span
+            >
+          </td>
+          <td>
+            <a
+              *ngIf="clientDetails.udyogAadharImage"
+              (click)="openFile(clientDetails.udyogAadharImage, clientDetails.udyogAadharImageContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="clientDetails.udyogAadharImage"
+              >{{ clientDetails.udyogAadharImageContentType }}, {{ byteSize(clientDetails.udyogAadharImage) }}</span
+            >
+          </td>
+          <td>{{ clientDetails.description }}</td>
+          <td>{{ clientDetails.nameOfBeneficiary }}</td>
+          <td>{{ clientDetails.accountNumber }}</td>
+          <td>{{ clientDetails.bankName }}</td>
+          <td>{{ clientDetails.accountType }}</td>
+          <td>{{ clientDetails.ifscCode }}</td>
+          <td>{{ clientDetails.registrationCategory }}</td>
+          <td jhiTranslate="{{ 'gyanTatvApp.RegistrationLevel.' + clientDetails.registrationLevel }}">
+            {{ clientDetails.registrationLevel }}
+          </td>
+          <td>{{ clientDetails.isApproved }}</td>
+          <td>{{ clientDetails.isActivated }}</td>
+          <td>{{ clientDetails.freeField1 }}</td>
+          <td>{{ clientDetails.freeField2 }}</td>
+          <td>{{ clientDetails.freeField3 }}</td>
+          <td>{{ clientDetails.freeField4 }}</td>
+          <td>{{ clientDetails.lastModified }}</td>
+          <td>{{ clientDetails.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="clientDetails.district">
+              <a [routerLink]="['/district', clientDetails.district?.id, 'view']">{{ clientDetails.district?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/client-details', clientDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/client-details', clientDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(clientDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="clientDetails && clientDetails.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

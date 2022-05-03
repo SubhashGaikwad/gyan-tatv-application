@@ -1,0 +1,90 @@
+{
+  "applications": "*",
+  "changelogDate": "20220503063937",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "product_client_agreement",
+  "fields": [
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "creditPeriod",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "penalty",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "penaltyTerms",
+      "fieldType": "PenaltyTerms",
+      "fieldValues": "DAILY (Daily),MONTHLY (Monthly),QUARTERLY (Quarterly),YEARLY (Yearly)"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "agreementPeriod",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "termAndConditions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ProductClientAgreement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productClientAgreement",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "clientDetails",
+      "otherEntityRelationshipName": "productClientAgreement",
+      "relationshipName": "clientDetails",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

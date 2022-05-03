@@ -1,0 +1,175 @@
+{
+  "applications": "*",
+  "changelogDate": "20220503063934",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "client_details",
+  "fields": [
+    {
+      "fieldName": "customerID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clientName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "clientType",
+      "fieldType": "ClientType",
+      "fieldValues": "SUPPLIER (Supplier),CONSUMER (Consumer),BOTH (Both),OTHER (Other)"
+    },
+    {
+      "fieldName": "mobileNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pincode",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "billingAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyContactNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gstinNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "companyPan",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pancardImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "companyTan",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tanImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "gstCertificateImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "cancelledChequeImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "udyogAadharImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameOfBeneficiary",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ifscCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registrationCategory",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registrationLevel",
+      "fieldType": "RegistrationLevel",
+      "fieldValues": "STATE (State),APMC (APMC)"
+    },
+    {
+      "fieldName": "isApproved",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "freeField1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "freeField4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ClientDetails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "clientDetails",
+      "ownerSide": true,
+      "relationshipName": "district",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "productClientAgreement",
+      "otherEntityRelationshipName": "clientDetails",
+      "relationshipName": "productClientAgreement",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

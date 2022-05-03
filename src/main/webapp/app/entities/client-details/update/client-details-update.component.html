@@ -1,0 +1,616 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-client-details-heading"
+        data-cy="ClientDetailsCreateUpdateHeading"
+        jhiTranslate="gyanTatvApp.clientDetails.home.createOrEditLabel"
+      >
+        Create or edit a Client Details
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.customerID" for="field_customerID">Customer ID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="customerID"
+            id="field_customerID"
+            data-cy="customerID"
+            formControlName="customerID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.clientName" for="field_clientName">Client Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="clientName"
+            id="field_clientName"
+            data-cy="clientName"
+            formControlName="clientName"
+          />
+          <div *ngIf="editForm.get('clientName')!.invalid && (editForm.get('clientName')!.dirty || editForm.get('clientName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('clientName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.clientType" for="field_clientType">Client Type</label>
+          <select class="form-control" name="clientType" formControlName="clientType" id="field_clientType" data-cy="clientType">
+            <option [ngValue]="null">{{ 'gyanTatvApp.ClientType.null' | translate }}</option>
+            <option *ngFor="let clientType of clientTypeValues" [value]="clientType">
+              {{ 'gyanTatvApp.ClientType.' + clientType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.mobileNo" for="field_mobileNo">Mobile No</label>
+          <input type="text" class="form-control" name="mobileNo" id="field_mobileNo" data-cy="mobileNo" formControlName="mobileNo" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.pincode" for="field_pincode">Pincode</label>
+          <input type="number" class="form-control" name="pincode" id="field_pincode" data-cy="pincode" formControlName="pincode" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.billingAddress" for="field_billingAddress"
+            >Billing Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="billingAddress"
+            id="field_billingAddress"
+            data-cy="billingAddress"
+            formControlName="billingAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.companyName" for="field_companyName">Company Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="companyName"
+            id="field_companyName"
+            data-cy="companyName"
+            formControlName="companyName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.companyContactNo" for="field_companyContactNo"
+            >Company Contact No</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="companyContactNo"
+            id="field_companyContactNo"
+            data-cy="companyContactNo"
+            formControlName="companyContactNo"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.website" for="field_website">Website</label>
+          <input type="text" class="form-control" name="website" id="field_website" data-cy="website" formControlName="website" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.gstinNumber" for="field_gstinNumber">Gstin Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="gstinNumber"
+            id="field_gstinNumber"
+            data-cy="gstinNumber"
+            formControlName="gstinNumber"
+          />
+          <div
+            *ngIf="editForm.get('gstinNumber')!.invalid && (editForm.get('gstinNumber')!.dirty || editForm.get('gstinNumber')!.touched)"
+          ></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.companyPan" for="field_companyPan">Company Pan</label>
+          <input
+            type="text"
+            class="form-control"
+            name="companyPan"
+            id="field_companyPan"
+            data-cy="companyPan"
+            formControlName="companyPan"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.pancardImage" for="field_pancardImage">Pancard Image</label>
+          <div>
+            <div *ngIf="editForm.get('pancardImage')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('pancardImage')!.value, editForm.get('pancardImageContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('pancardImageContentType')!.value }}, {{ byteSize(editForm.get('pancardImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ pancardImage: null }); editForm.patchValue({ pancardImageContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_pancardImage"
+              data-cy="pancardImage"
+              (change)="setFileData($event, 'pancardImage', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="pancardImage"
+            id="field_pancardImage"
+            data-cy="pancardImage"
+            formControlName="pancardImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="pancardImageContentType"
+            id="field_pancardImageContentType"
+            formControlName="pancardImageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.companyTan" for="field_companyTan">Company Tan</label>
+          <input
+            type="text"
+            class="form-control"
+            name="companyTan"
+            id="field_companyTan"
+            data-cy="companyTan"
+            formControlName="companyTan"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.tanImage" for="field_tanImage">Tan Image</label>
+          <div>
+            <div *ngIf="editForm.get('tanImage')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('tanImage')!.value, editForm.get('tanImageContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('tanImageContentType')!.value }}, {{ byteSize(editForm.get('tanImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ tanImage: null }); editForm.patchValue({ tanImageContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_tanImage"
+              data-cy="tanImage"
+              (change)="setFileData($event, 'tanImage', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="tanImage" id="field_tanImage" data-cy="tanImage" formControlName="tanImage" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="tanImageContentType"
+            id="field_tanImageContentType"
+            formControlName="tanImageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.gstCertificateImage" for="field_gstCertificateImage"
+            >Gst Certificate Image</label
+          >
+          <div>
+            <div *ngIf="editForm.get('gstCertificateImage')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('gstCertificateImage')!.value, editForm.get('gstCertificateImageContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('gstCertificateImageContentType')!.value }},
+                {{ byteSize(editForm.get('gstCertificateImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ gstCertificateImage: null }); editForm.patchValue({ gstCertificateImageContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_gstCertificateImage"
+              data-cy="gstCertificateImage"
+              (change)="setFileData($event, 'gstCertificateImage', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="gstCertificateImage"
+            id="field_gstCertificateImage"
+            data-cy="gstCertificateImage"
+            formControlName="gstCertificateImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="gstCertificateImageContentType"
+            id="field_gstCertificateImageContentType"
+            formControlName="gstCertificateImageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.cancelledChequeImage" for="field_cancelledChequeImage"
+            >Cancelled Cheque Image</label
+          >
+          <div>
+            <div *ngIf="editForm.get('cancelledChequeImage')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('cancelledChequeImage')!.value, editForm.get('cancelledChequeImageContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('cancelledChequeImageContentType')!.value }},
+                {{ byteSize(editForm.get('cancelledChequeImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="
+                  editForm.patchValue({ cancelledChequeImage: null }); editForm.patchValue({ cancelledChequeImageContentType: null })
+                "
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_cancelledChequeImage"
+              data-cy="cancelledChequeImage"
+              (change)="setFileData($event, 'cancelledChequeImage', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="cancelledChequeImage"
+            id="field_cancelledChequeImage"
+            data-cy="cancelledChequeImage"
+            formControlName="cancelledChequeImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="cancelledChequeImageContentType"
+            id="field_cancelledChequeImageContentType"
+            formControlName="cancelledChequeImageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.udyogAadharImage" for="field_udyogAadharImage"
+            >Udyog Aadhar Image</label
+          >
+          <div>
+            <div *ngIf="editForm.get('udyogAadharImage')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('udyogAadharImage')!.value, editForm.get('udyogAadharImageContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('udyogAadharImageContentType')!.value }}, {{ byteSize(editForm.get('udyogAadharImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ udyogAadharImage: null }); editForm.patchValue({ udyogAadharImageContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_udyogAadharImage"
+              data-cy="udyogAadharImage"
+              (change)="setFileData($event, 'udyogAadharImage', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="udyogAadharImage"
+            id="field_udyogAadharImage"
+            data-cy="udyogAadharImage"
+            formControlName="udyogAadharImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="udyogAadharImageContentType"
+            id="field_udyogAadharImageContentType"
+            formControlName="udyogAadharImageContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.nameOfBeneficiary" for="field_nameOfBeneficiary"
+            >Name Of Beneficiary</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nameOfBeneficiary"
+            id="field_nameOfBeneficiary"
+            data-cy="nameOfBeneficiary"
+            formControlName="nameOfBeneficiary"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.accountNumber" for="field_accountNumber">Account Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accountNumber"
+            id="field_accountNumber"
+            data-cy="accountNumber"
+            formControlName="accountNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.bankName" for="field_bankName">Bank Name</label>
+          <input type="text" class="form-control" name="bankName" id="field_bankName" data-cy="bankName" formControlName="bankName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.accountType" for="field_accountType">Account Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accountType"
+            id="field_accountType"
+            data-cy="accountType"
+            formControlName="accountType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.ifscCode" for="field_ifscCode">Ifsc Code</label>
+          <input type="text" class="form-control" name="ifscCode" id="field_ifscCode" data-cy="ifscCode" formControlName="ifscCode" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.registrationCategory" for="field_registrationCategory"
+            >Registration Category</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registrationCategory"
+            id="field_registrationCategory"
+            data-cy="registrationCategory"
+            formControlName="registrationCategory"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.registrationLevel" for="field_registrationLevel"
+            >Registration Level</label
+          >
+          <select
+            class="form-control"
+            name="registrationLevel"
+            formControlName="registrationLevel"
+            id="field_registrationLevel"
+            data-cy="registrationLevel"
+          >
+            <option [ngValue]="null">{{ 'gyanTatvApp.RegistrationLevel.null' | translate }}</option>
+            <option *ngFor="let registrationLevel of registrationLevelValues" [value]="registrationLevel">
+              {{ 'gyanTatvApp.RegistrationLevel.' + registrationLevel | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.isApproved" for="field_isApproved">Is Approved</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isApproved"
+            id="field_isApproved"
+            data-cy="isApproved"
+            formControlName="isApproved"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.isActivated" for="field_isActivated">Is Activated</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isActivated"
+            id="field_isActivated"
+            data-cy="isActivated"
+            formControlName="isActivated"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.freeField1" for="field_freeField1">Free Field 1</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField1"
+            id="field_freeField1"
+            data-cy="freeField1"
+            formControlName="freeField1"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.freeField2" for="field_freeField2">Free Field 2</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField2"
+            id="field_freeField2"
+            data-cy="freeField2"
+            formControlName="freeField2"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.freeField3" for="field_freeField3">Free Field 3</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField3"
+            id="field_freeField3"
+            data-cy="freeField3"
+            formControlName="freeField3"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.freeField4" for="field_freeField4">Free Field 4</label>
+          <input
+            type="text"
+            class="form-control"
+            name="freeField4"
+            id="field_freeField4"
+            data-cy="freeField4"
+            formControlName="freeField4"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.lastModified" for="field_lastModified">Last Modified</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gyanTatvApp.clientDetails.district" for="field_district">District</label>
+          <select class="form-control" id="field_district" data-cy="district" name="district" formControlName="district">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="districtOption.id === editForm.get('district')!.value?.id ? editForm.get('district')!.value : districtOption"
+              *ngFor="let districtOption of districtsCollection; trackBy: trackDistrictById"
+            >
+              {{ districtOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

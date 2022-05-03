@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productClientAgreement">
+      <h2 data-cy="productClientAgreementDetailsHeading">
+        <span jhiTranslate="gyanTatvApp.productClientAgreement.detail.title">Product Client Agreement</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.price">Price</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.price }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.creditPeriod">Credit Period</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.creditPeriod }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.penalty">Penalty</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.penalty }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.penaltyTerms">Penalty Terms</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gyanTatvApp.PenaltyTerms.' + productClientAgreement.penaltyTerms }}">{{
+            productClientAgreement.penaltyTerms
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.notes">Notes</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.image">Image</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.image }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.agreementPeriod">Agreement Period</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.agreementPeriod }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.termAndConditions">Term And Conditions</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.termAndConditions }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.description">Description</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.freeField1">Free Field 1</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.freeField1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.freeField2">Free Field 2</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.freeField2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.freeField3">Free Field 3</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.freeField3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.freeField4">Free Field 4</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.freeField4 }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ productClientAgreement.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.product">Product</span></dt>
+        <dd>
+          <div *ngIf="productClientAgreement.product">
+            <a [routerLink]="['/product', productClientAgreement.product?.id, 'view']">{{ productClientAgreement.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gyanTatvApp.productClientAgreement.clientDetails">Client Details</span></dt>
+        <dd>
+          <div *ngIf="productClientAgreement.clientDetails">
+            <a [routerLink]="['/client-details', productClientAgreement.clientDetails?.id, 'view']">{{
+              productClientAgreement.clientDetails?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-client-agreement', productClientAgreement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
